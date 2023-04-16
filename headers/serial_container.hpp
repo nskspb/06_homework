@@ -1,6 +1,6 @@
 #pragma once
 
-#include <IContainers.hpp>
+#include "IContainers.hpp"
 
 template <typename T>
 class serial_container : public IContainers<T>
@@ -29,7 +29,7 @@ public:
         data[c_size++] = element;
     }
 
-    void insert(int position, const T &element)
+    void insert(int position, const T &element) override
     {
         if (c_size == capacity)
         {
@@ -59,7 +59,7 @@ public:
         c_size--;
     }
 
-    T operator[](int position) const
+    T &operator[](int position) const override
     {
         return data[position];
     }
@@ -79,6 +79,11 @@ public:
         return c_size;
     }
 
+private:
+    int c_size;
+    int capacity;
+    T *data;
+
     void change_capacity()
     {
         if (capacity == 0)
@@ -90,13 +95,8 @@ public:
         else
         {
             std ::cout << "&";
-            capacity *= 2;
+            capacity = (capacity * 3 + 1) / 2;
             std ::cout << "capacity = " << capacity << std ::endl;
         }
     }
-
-private:
-    int c_size;
-    int capacity;
-    T *data;
 };

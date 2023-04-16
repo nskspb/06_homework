@@ -10,6 +10,6 @@ public:
     virtual void insert(int position, const T &element) = 0;
     virtual void erase(int position) = 0;
     virtual int size() const = 0;
-    virtual T operator[](int position) const = 0;
+    virtual T &operator[](int position) const = 0;
     virtual void show() = 0;
 };
