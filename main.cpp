@@ -64,8 +64,6 @@ int main()
 
       doubly_list.show();*/
 
-    std::cout << "----------------------Homework-------------------------" << std::endl;
-
     const size_t container_count = 3;
 
     IContainers<int> *container[container_count];
