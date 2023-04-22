@@ -2,6 +2,7 @@
 
 #include "headers/serial_container.hpp"
 #include "headers/list_container.hpp"
+#include "headers/doubly_list_container.hpp"
 
 int main()
 {
@@ -52,6 +53,15 @@ int main()
 
     std::cout << "list[2] = " << list[2] << std::endl;
     std::cout << "size = " << list.size() << std::endl;
+
+    doubly_list_container<int> doubly_list;
+
+    doubly_list.push_back(4);
+    doubly_list.push_back(8);
+    doubly_list.push_back(12);
+    doubly_list.push_back(16);
+
+    doubly_list.show();
 
     std::cout << "----------------------Homework-------------------------" << std::endl;
 
