@@ -79,9 +79,9 @@ public:
 
             Node<T> *follow = new Node<T>(element, previous->next);
             previous->next = follow;
+            c_size++;
         }
-        c_size++;
-    }
+        }
 
     void erase(int position)
     {
@@ -136,6 +136,11 @@ public:
     int size() const override
     {
         return c_size;
+    }
+
+    const char *name() const override
+    {
+        return "list_container";
     }
 
     void clear()

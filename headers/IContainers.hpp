@@ -12,4 +12,5 @@ public:
     virtual int size() const = 0;
     virtual T &operator[](int position) const = 0;
     virtual void show() = 0;
+    virtual const char *name() const = 0;
 };

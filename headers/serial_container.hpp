@@ -79,6 +79,11 @@ public:
         return c_size;
     }
 
+    const char *name() const override
+    {
+        return "serial_container";
+    }
+
 private:
     int c_size;
     int capacity;
