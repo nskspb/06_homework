@@ -97,31 +97,7 @@ int main()
         container[i]->push_back(30);
         container[i]->show();
 
-        std::cout << "----------------------- end of " << container[i]->name() << "------------------------------" << std::endl;
+        std::cout << std::endl;
     }
-
-    serial_container<int> serial;
-
-    for (int i = 0; i < 10; ++i)
-    {
-        serial.push_back(i);
-    }
-    serial.show();
-
-    std::cout << "size = " << serial.size() << std::endl;
-
-    serial.erase(6);
-    serial.erase(4);
-    serial.erase(2);
-    serial.show();
-
-    serial.insert(0, 10);
-    serial.show();
-
-    serial.insert(serial.size() / 2, 20);
-    serial.show();
-
-    serial.push_back(30);
-    serial.show();
     return 0;
 }

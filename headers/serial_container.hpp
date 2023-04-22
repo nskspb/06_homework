@@ -93,15 +93,12 @@ private:
     {
         if (capacity == 0)
         {
-            std ::cout << "*";
             capacity++;
             return;
         }
         else
         {
-            std ::cout << "&";
             capacity = (capacity * 3 + 1) / 2;
-            std ::cout << "capacity = " << capacity << std ::endl;
         }
     }
 };
