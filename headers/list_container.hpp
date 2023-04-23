@@ -7,7 +7,6 @@ class Node
 {
 public:
     Node *next;
-    //  Node *prev;
     T data;
 
     Node(T data = T(), Node *next = nullptr)
@@ -62,7 +61,7 @@ public:
         c_size--;
     }
 
-    void insert(int position, const T &element)
+    void insert(int position, const T &element) override
     {
         if (position == 0)
         {
@@ -81,9 +80,9 @@ public:
             previous->next = follow;
             c_size++;
         }
-        }
+    }
 
-    void erase(int position)
+    void erase(int position) override
     {
         if (position == 0)
         {
@@ -101,11 +100,11 @@ public:
             Node<T> *follow = previous->next;
             previous->next = follow->next;
             delete follow;
+            c_size--;
         }
-        c_size--;
-    };
+    }
 
-    T &operator[](int position) const
+    T &operator[](int position) const override
     {
         int count = 0;
         Node<T> *tmp = head;
@@ -120,7 +119,7 @@ public:
         }
 
         return tmp->data;
-    };
+    }
 
     void show() override
     {
@@ -131,7 +130,7 @@ public:
             tmp = tmp->next;
         }
         std::cout << std::endl;
-    };
+    }
 
     int size() const override
     {
@@ -159,5 +158,4 @@ public:
 private:
     int c_size;
     Node<T> *head;
-    // Node<T> *tail;
 };

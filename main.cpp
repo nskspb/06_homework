@@ -64,40 +64,65 @@ int main()
 
       doubly_list.show();*/
 
-    const size_t container_count = 3;
+    /* const size_t container_count = 3;
 
-    IContainers<int> *container[container_count];
+     IContainers<int> *container[container_count];
 
-    container[0] = new serial_container<int>{};
-    container[1] = new list_container<int>{};
-    container[2] = new doubly_list_container<int>{};
+     container[0] = new serial_container<int>{};
+     container[1] = new list_container<int>{};
+     container[2] = new doubly_list_container<int>{};
 
-    for (size_t i = 0; i < container_count; ++i)
-    {
-        std::cout << "-------------------" << container[i]->name() << "------------------------------" << std::endl;
-        for (int j = 0; j < 10; ++j)
-        {
-            container[i]->push_back(j);
-        }
-        container[i]->show();
+     for (size_t i = 0; i < container_count; ++i)
+     {
+         std::cout << "-------------------" << container[i]->name() << "------------------------------" << std::endl;
+         for (int j = 0; j < 10; ++j)
+         {
+             container[i]->push_back(j);
+         }
+         container[i]->show();
 
-        std::cout << "size = " << container[i]->size() << std::endl;
+         std::cout << "size = " << container[i]->size() << std::endl;
 
-        container[i]->erase(6);
-        container[i]->erase(4);
-        container[i]->erase(2);
-        container[i]->show();
+         container[i]->erase(6);
+         container[i]->erase(4);
+         container[i]->erase(2);
+         container[i]->show();
 
-        container[i]->insert(0, 10);
-        container[i]->show();
+         container[i]->insert(0, 10);
+         container[i]->show();
 
-        container[i]->insert(container[i]->size() / 2, 20);
-        container[i]->show();
+         container[i]->insert(container[i]->size() / 2, 20);
+         container[i]->show();
 
-        container[i]->push_back(30);
-        container[i]->show();
+         container[i]->push_back(30);
+         container[i]->show();
 
-        std::cout << std::endl;
-    }
+         std::cout << std::endl;
+     }*/
+
+    std::cout << std::endl
+              << "----------proverka------------" << std::endl;
+    doubly_list_container<int> doub;
+
+    doub.push_front(2);
+    doub.push_back(5);
+    doub.insert(0, 13);
+    doub.insert(3, 11);
+    doub.insert(1, 10);
+    doub.insert(3, 14);
+    doub.insert(3, 3);
+    doub.insert(5, 6);
+    doub.insert(7, 8);
+    doub.show();
+    doub.pop_front();
+    doub.pop_back();
+    doub.show();
+    doub.erase(5);
+    doub.show();
+    std::cout << "doub[2] = " << doub[2] << std ::endl;
+    std::cout << "doub[5] = " << doub[5] << std ::endl;
+
+    std::cout << std::endl;
+
     return 0;
 }
