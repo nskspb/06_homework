@@ -7,7 +7,3 @@ include_directories(headers)
 add_executable(my_containers
 main.cpp)
 set_target_properties(my_containers PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON)
-
-##add_executable(test
-##test.cpp)
-##set_target_properties(test PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON)
