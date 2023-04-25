@@ -162,31 +162,22 @@ public:
     {
         if (c_size / 2 - position >= 0)
         {
-            int count = 0;
             Node1<T> *tmp = head;
-            while (tmp->next != nullptr)
+            for (int i = 0; i < position; ++i)
             {
-                if (count == position)
-                {
-                    return tmp->data;
-                }
                 tmp = tmp->next;
-                count++;
             }
+            return tmp->data;
         }
         else
         {
-            int count = c_size;
             Node1<T> *tmp = tail;
-            while (tmp->prev != nullptr)
+
+            for (int i = c_size; i > position + 1; --i)
             {
-                if (count == position + 1)
-                {
-                    return tmp->data;
-                }
                 tmp = tmp->prev;
-                count--;
             }
+            return tmp->data;
         }
     }
 

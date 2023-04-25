@@ -106,18 +106,12 @@ public:
 
     T &operator[](int position) const override
     {
-        int count = 0;
         Node<T> *tmp = head;
-        while (tmp->next != nullptr)
-        {
-            if (count == position)
-            {
-                return tmp->data;
-            }
-            tmp = tmp->next;
-            count++;
-        }
 
+        for (int i = 0; i < position; ++i)
+        {
+            tmp = tmp->next;
+        }
         return tmp->data;
     }
 
