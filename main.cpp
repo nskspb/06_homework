@@ -40,6 +40,8 @@ int main()
         container[i]->show();
 
         std::cout << std::endl;
+
+        delete container[i];
     }
     return 0;
 }
