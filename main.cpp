@@ -4,6 +4,19 @@
 #include "headers/list_container.hpp"
 #include "headers/doubly_list_container.hpp"
 
+namespace tests
+{
+    void example()
+    {
+        serial_container<int> a;
+        a.push_back(42);
+        a.push_back(43);
+        a.push_back(44);
+        auto b = a;
+        b.show();
+    }
+}
+
 int main()
 {
     const size_t container_count = 3;
@@ -45,5 +58,7 @@ int main()
 
         delete container[i];
     }
+
+    tests::example();
     return 0;
 }
