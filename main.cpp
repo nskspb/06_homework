@@ -16,28 +16,30 @@ int main()
 
     for (size_t i = 0; i < container_count; ++i)
     {
-        std::cout << "-------------------" << container[i]->name() << "------------------------------" << std::endl;
+
+        auto &c = *container[i];
+        std::cout << "-------------------" << c.name() << "------------------------------" << std::endl;
         for (int j = 0; j < 10; ++j)
         {
-            container[i]->push_back(j);
+            c.push_back(j);
         }
-        container[i]->show();
+        c.show();
 
-        std::cout << "size = " << container[i]->size() << std::endl;
+        std::cout << "size = " << c.size() << std::endl;
 
-        container[i]->erase(6);
-        container[i]->erase(4);
-        container[i]->erase(2);
-        container[i]->show();
+        c.erase(6);
+        c.erase(4);
+        c.erase(2);
+        c.show();
 
-        container[i]->insert(0, 10);
-        container[i]->show();
+        c.insert(0, 10);
+        c.show();
 
-        container[i]->insert(container[i]->size() / 2, 20);
-        container[i]->show();
+        c.insert(c.size() / 2, 20);
+        c.show();
 
-        container[i]->push_back(30);
-        container[i]->show();
+        c.push_back(30);
+        c.show();
 
         std::cout << std::endl;
 
