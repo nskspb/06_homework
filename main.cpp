@@ -12,8 +12,24 @@ namespace tests
         a.push_back(42);
         a.push_back(43);
         a.push_back(44);
-        auto b = a;
+
+        serial_container<int> b;
+        b.push_back(12);
+        b.push_back(13);
+        b.push_back(14);
         b.show();
+        b = a;
+        b.show();
+        a.show();
+
+        serial_container<int> c;
+        b.push_back(17);
+        c = std::move(b);
+        c.show();
+
+        /*serial_container<int> c = std::move(b);
+        c.push_back(15);
+        c.show();*/
     }
 }
 

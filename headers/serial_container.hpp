@@ -13,6 +13,42 @@ public:
         delete[] data;
     }
 
+    serial_container(const serial_container &other)
+    {
+        c_size = other.c_size;
+        data = new T[c_size];
+        for (int i = 0; i < c_size; ++i)
+        {
+            data[i] = other.data[i];
+        }
+    }
+
+    serial_container(const serial_container &&other)
+    {
+        data = other.data;
+        c_size = other.c_size;
+        other.data = nullptr;
+        other.c_size = 0;
+    }
+
+    serial_container &operator=(const serial_container &other)
+    {
+        delete[] data;
+        c_size = other.c_size;
+        data = new T[c_size];
+        for (int i = 0; i < c_size; ++i)
+        {
+            data[i] = other.data[i];
+        }
+        return *this;
+    }
+
+    serial_container &operator=(const serial_container &&other)
+    {
+        serial_container tmp{std::move(other)};
+        return *this = tmp;
+    }
+
     void push_back(const T &element) override
     {
         if (c_size == capacity)
@@ -85,9 +121,9 @@ public:
     }
 
 private:
-    int c_size;
+    mutable int c_size;
     int capacity;
-    T *data;
+    mutable T *data;
 
     void change_capacity()
     {
