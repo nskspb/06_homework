@@ -26,10 +26,6 @@ namespace tests
         b.push_back(17);
         c = std::move(b);
         c.show();
-
-        /*serial_container<int> c = std::move(b);
-        c.push_back(15);
-        c.show();*/
     }
 }
 
