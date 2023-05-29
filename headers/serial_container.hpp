@@ -13,40 +13,42 @@ public:
         delete[] data;
     }
 
+    void swap(const serial_container &first, const serial_container &second)
+    {
+        std::swap(first.c_size, second.c_size);
+        std::swap(first.data, second.data);
+    }
+
     serial_container(const serial_container &other)
     {
+        std::cout << "copyyyyyyyyy";
         c_size = other.c_size;
         data = new T[c_size];
         for (int i = 0; i < c_size; ++i)
         {
             data[i] = other.data[i];
         }
-    }
-
-    serial_container(const serial_container &&other)
-    {
-        data = other.data;
-        c_size = other.c_size;
-        other.data = nullptr;
-        other.c_size = 0;
     }
 
     serial_container &operator=(const serial_container &other)
     {
-        delete[] data;
-        c_size = other.c_size;
-        data = new T[c_size];
-        for (int i = 0; i < c_size; ++i)
-        {
-            data[i] = other.data[i];
-        }
+        std::cout << "prisv cop  ";
+        serial_container tmp{other};
+        swap(*this, tmp);
         return *this;
+    }
+
+    serial_container(const serial_container &&other)
+    {
+        std::cout << "  pereeemesh  ";
+        *this = std::move(other);
     }
 
     serial_container &operator=(const serial_container &&other)
     {
-        serial_container tmp{std::move(other)};
-        return *this = tmp;
+        std::cout << "prisv perem  ";
+        swap(*this, other);
+        return *this;
     }
 
     void push_back(const T &element) override

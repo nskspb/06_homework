@@ -27,6 +27,26 @@ public:
         clear();
     }
 
+    list_container(const list_container &other) : c_size{}, head{nullptr}
+    {
+        std::cout << "copy" << std::endl;
+        for (int i = 0; i < other.c_size; ++i)
+        {
+            this->push_back(other[i]);
+        }
+    }
+
+    list_container &operator=(const list_container &other)
+    {
+        clear();
+        std::cout << "operator=" << std::endl;
+        for (int i = 0; i < other.c_size; ++i)
+        {
+            this->push_back(other[i]);
+        }
+        return *this;
+    }
+
     void push_back(const T &element) override
     {
         if (head == nullptr)

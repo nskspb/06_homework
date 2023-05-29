@@ -13,19 +13,29 @@ namespace tests
         a.push_back(43);
         a.push_back(44);
 
-        serial_container<int> b;
+        serial_container<int> b = a;
+
+        b.show();
         b.push_back(12);
         b.push_back(13);
         b.push_back(14);
-        b.show();
-        b = a;
+        // b.show();
+
         b.show();
         a.show();
 
-        serial_container<int> c;
-        b.push_back(17);
-        c = std::move(b);
+        // list_container<int> c;
+        // c = b;
+        //   c = std::move(b);
+        // c.show();
+
+        serial_container<int> c = std::move(b);
+        std::cout << "***" << std::endl;
+        // c = b;
+        // c ;
         c.show();
+        // b.push_back(18);
+        // b.show();
     }
 }
 
