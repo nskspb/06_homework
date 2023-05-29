@@ -24,17 +24,17 @@ namespace tests
         b.show();
         a.show();
 
-        list_container<int> c = b;
+        list_container<int> c = std::move(b);
         // c = b;
-        //    c = std::move(b);
+        // c = std::move(b);
         c.show();
-
+        b.push_back(18);
+        b.show();
         /*list_container<int> c;
         std::cout << "***" << std::endl;
         c = std::move(b);
         c.show();
-        b.push_back(18);
-        b.show();*/
+        */
     }
 }
 
