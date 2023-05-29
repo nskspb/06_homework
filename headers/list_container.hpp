@@ -27,6 +27,12 @@ public:
         clear();
     }
 
+    void swap(const list_container &first, const list_container &second)
+    {
+        std::swap(first.c_size, second.c_size);
+        std::swap(first.head, second.head);
+    }
+
     list_container(const list_container &other) : c_size{}, head{nullptr}
     {
         std::cout << "copy" << std::endl;
@@ -38,12 +44,22 @@ public:
 
     list_container &operator=(const list_container &other)
     {
-        clear();
         std::cout << "operator=" << std::endl;
-        for (int i = 0; i < other.c_size; ++i)
-        {
-            this->push_back(other[i]);
-        }
+        list_container tmp{other};
+        swap(*this, tmp);
+        return *this;
+    }
+
+    list_container(const list_container &&other) noexcept
+    {
+        std::cout << "  pereeemesh  ";
+        *this = std::move(other);
+    }
+
+    list_container &operator=(const list_container &&other) noexcept
+    {
+        std::cout << "prisv perem  ";
+        swap(*this, other);
         return *this;
     }
 
@@ -170,6 +186,6 @@ public:
     }
 
 private:
-    int c_size;
-    Node<T> *head;
+    mutable int c_size;
+    mutable Node<T> *head;
 };

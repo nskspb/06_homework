@@ -8,12 +8,12 @@ namespace tests
 {
     void example()
     {
-        serial_container<int> a;
+        list_container<int> a;
         a.push_back(42);
         a.push_back(43);
         a.push_back(44);
 
-        serial_container<int> b = a;
+        list_container<int> b = a;
 
         b.show();
         b.push_back(12);
@@ -24,18 +24,17 @@ namespace tests
         b.show();
         a.show();
 
-        // list_container<int> c;
+        list_container<int> c = b;
         // c = b;
-        //   c = std::move(b);
-        // c.show();
-
-        serial_container<int> c = std::move(b);
-        std::cout << "***" << std::endl;
-        // c = b;
-        // c ;
+        //    c = std::move(b);
         c.show();
-        // b.push_back(18);
-        // b.show();
+
+        /*list_container<int> c;
+        std::cout << "***" << std::endl;
+        c = std::move(b);
+        c.show();
+        b.push_back(18);
+        b.show();*/
     }
 }
 

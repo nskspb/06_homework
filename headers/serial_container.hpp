@@ -38,13 +38,13 @@ public:
         return *this;
     }
 
-    serial_container(const serial_container &&other)
+    serial_container(const serial_container &&other) noexcept
     {
         std::cout << "  pereeemesh  ";
         *this = std::move(other);
     }
 
-    serial_container &operator=(const serial_container &&other)
+    serial_container &operator=(const serial_container &&other) noexcept
     {
         std::cout << "prisv perem  ";
         swap(*this, other);
