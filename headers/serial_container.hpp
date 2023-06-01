@@ -54,13 +54,6 @@ public:
         if (c_size == capacity)
         {
             change_capacity();
-            T *tmp = new T[capacity];
-            for (int i = 0; i < c_size; ++i)
-            {
-                tmp[i] = data[i];
-            }
-            delete[] data;
-            data = tmp;
         }
         data[c_size++] = element;
     }
@@ -70,13 +63,6 @@ public:
         if (c_size == capacity)
         {
             change_capacity();
-            T *tmp = new T[capacity];
-            for (int i = 0; i < c_size; ++i)
-            {
-                tmp[i] = data[i];
-            }
-            delete[] data;
-            data = tmp;
         }
         c_size++;
         for (int i = c_size; i > position; --i)
@@ -130,11 +116,17 @@ private:
         if (capacity == 0)
         {
             capacity++;
-            return;
         }
         else
         {
             capacity = (capacity * 3 + 1) / 2;
         }
+        T *tmp = new T[capacity];
+        for (int i = 0; i < c_size; ++i)
+        {
+            tmp[i] = data[i];
+        }
+        delete[] data;
+        data = tmp;
     }
 };
