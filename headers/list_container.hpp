@@ -35,7 +35,6 @@ public:
 
     list_container(const list_container &other) : c_size{}, head{nullptr}
     {
-        std::cout << "copy" << std::endl;
         for (int i = 0; i < other.c_size; ++i)
         {
             this->push_back(other[i]);
@@ -44,7 +43,6 @@ public:
 
     list_container &operator=(const list_container &other)
     {
-        std::cout << "operator=" << std::endl;
         list_container tmp{other};
         swap(*this, tmp);
         return *this;
@@ -52,13 +50,11 @@ public:
 
     list_container(const list_container &&other) noexcept
     {
-        std::cout << "  pereeemesh  ";
         *this = std::move(other);
     }
 
     list_container &operator=(const list_container &&other) noexcept
     {
-        std::cout << "prisv perem  ";
         swap(*this, other);
 
         other.c_size = 0;
