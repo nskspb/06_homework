@@ -21,7 +21,6 @@ public:
 
     serial_container(const serial_container &other)
     {
-        std::cout << "copyyyyyyyyy";
         c_size = other.c_size;
         data = new T[c_size];
         for (int i = 0; i < c_size; ++i)
@@ -32,7 +31,6 @@ public:
 
     serial_container &operator=(const serial_container &other)
     {
-        std::cout << "prisv cop  ";
         serial_container tmp{other};
         swap(*this, tmp);
         return *this;
@@ -40,13 +38,11 @@ public:
 
     serial_container(const serial_container &&other) noexcept
     {
-        std::cout << "  pereeemesh  ";
         *this = std::move(other);
     }
 
     serial_container &operator=(const serial_container &&other) noexcept
     {
-        std::cout << "prisv perem  ";
         swap(*this, other);
         other.c_size = 0;
         other.data = nullptr;
