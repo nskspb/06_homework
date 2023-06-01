@@ -60,6 +60,9 @@ public:
     {
         std::cout << "prisv perem  ";
         swap(*this, other);
+
+        other.c_size = 0;
+        other.head = nullptr;
         return *this;
     }
 

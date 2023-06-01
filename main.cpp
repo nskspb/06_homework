@@ -8,33 +8,32 @@ namespace tests
 {
     void example()
     {
-        list_container<int> a;
+        doubly_list_container<int> a;
         a.push_back(42);
         a.push_back(43);
         a.push_back(44);
 
-        list_container<int> b = a;
-
+        doubly_list_container<int> b = a;
         b.show();
         b.push_back(12);
         b.push_back(13);
         b.push_back(14);
-        // b.show();
-
         b.show();
         a.show();
 
-        list_container<int> c = std::move(b);
-        // c = b;
-        // c = std::move(b);
-        c.show();
-        b.push_back(18);
-        b.show();
-        /*list_container<int> c;
-        std::cout << "***" << std::endl;
+        doubly_list_container<int> c;
         c = std::move(b);
         c.show();
-        */
+        c.push_back(27);
+
+        doubly_list_container<int> d;
+        d = c;
+        d.push_back(31);
+        d.show();
+
+        doubly_list_container<int> e = std::move(d);
+        e.push_back(32);
+        e.show();
     }
 }
 

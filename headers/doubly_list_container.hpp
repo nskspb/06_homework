@@ -29,6 +29,42 @@ public:
         clear();
     }
 
+    void swap(const doubly_list_container &first, const doubly_list_container &second)
+    {
+        std::swap(first.c_size, second.c_size);
+        std::swap(first.head, second.head);
+        std::swap(first.tail, second.tail);
+    }
+
+    doubly_list_container(const doubly_list_container &other) : c_size{}, head{nullptr}, tail{nullptr}
+    {
+        for (int i = 0; i < other.c_size; ++i)
+        {
+            this->push_back(other[i]);
+        }
+    }
+
+    doubly_list_container &operator=(const doubly_list_container &other)
+    {
+        doubly_list_container tmp{other};
+        swap(*this, tmp);
+        return *this;
+    }
+
+    doubly_list_container(const doubly_list_container &&other) noexcept
+    {
+        *this = std::move(other);
+    }
+
+    doubly_list_container &operator=(const doubly_list_container &&other) noexcept
+    {
+        swap(*this, other);
+        other.c_size = 0;
+        other.head = nullptr;
+        other.tail = nullptr;
+        return *this;
+    }
+
     void push_back(const T &element) override
     {
         if (head == nullptr)
@@ -216,7 +252,7 @@ public:
     }
 
 private:
-    int c_size;
-    Node1<T> *head;
-    Node1<T> *tail;
+    mutable int c_size;
+    mutable Node1<T> *head;
+    mutable Node1<T> *tail;
 };
