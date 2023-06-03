@@ -51,16 +51,25 @@ public:
 
     void push_back(const T &element) override
     {
-        if (c_size == capacity)
+        if (c_size >= capacity)
         {
             change_capacity();
         }
         data[c_size++] = element;
     }
 
+    void erase(int position) override
+    {
+        for (int i = position + 1; i < c_size; ++i)
+        {
+            data[i - 1] = data[i];
+        }
+        c_size--;
+    }
+
     void insert(int position, const T &element) override
     {
-        if (c_size == capacity)
+        if (c_size >= capacity)
         {
             change_capacity();
         }
@@ -70,15 +79,6 @@ public:
             data[i] = data[i - 1];
         }
         data[position] = element;
-    }
-
-    void erase(int position) override
-    {
-        for (int i = position; i < c_size; ++i)
-        {
-            data[i] = data[i + 1];
-        }
-        c_size--;
     }
 
     T &operator[](int position) const override

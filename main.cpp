@@ -8,12 +8,15 @@ namespace tests
 {
     void example()
     {
-        doubly_list_container<int> a;
+        serial_container<int> a;
+        // a.insert(0, 41);
         a.push_back(42);
+        a.erase(0);
+        // a.show();
         a.push_back(43);
         a.push_back(44);
 
-        doubly_list_container<int> b = a;
+        serial_container<int> b = a;
         b.show();
         b.push_back(12);
         b.push_back(13);
@@ -21,17 +24,17 @@ namespace tests
         b.show();
         a.show();
 
-        doubly_list_container<int> c;
+        serial_container<int> c;
         c = std::move(b);
         c.show();
         c.push_back(27);
 
-        doubly_list_container<int> d;
+        serial_container<int> d;
         d = c;
         d.push_back(31);
         d.show();
 
-        doubly_list_container<int> e = std::move(d);
+        serial_container<int> e = std::move(d);
         e.push_back(32);
         e.show();
     }
