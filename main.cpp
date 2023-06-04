@@ -4,42 +4,6 @@
 #include "headers/list_container.hpp"
 #include "headers/doubly_list_container.hpp"
 
-namespace tests
-{
-    void example()
-    {
-        serial_container<int> a;
-        // a.insert(0, 41);
-        a.push_back(42);
-        a.erase(0);
-        // a.show();
-        a.push_back(43);
-        a.push_back(44);
-
-        serial_container<int> b = a;
-        b.show();
-        b.push_back(12);
-        b.push_back(13);
-        b.push_back(14);
-        b.show();
-        a.show();
-
-        serial_container<int> c;
-        c = std::move(b);
-        c.show();
-        c.push_back(27);
-
-        serial_container<int> d;
-        d = c;
-        d.push_back(31);
-        d.show();
-
-        serial_container<int> e = std::move(d);
-        e.push_back(32);
-        e.show();
-    }
-}
-
 int main()
 {
     const size_t container_count = 3;
@@ -81,7 +45,5 @@ int main()
 
         delete container[i];
     }
-
-    tests::example();
     return 0;
 }
