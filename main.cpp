@@ -12,9 +12,9 @@ namespace tests
         // a.insert(0, 41);
         a.push_back(42);
         // a.erase(0);
-        a.show();
         a.push_back(43);
         a.push_back(44);
+        a.show();
 
         list_container<int> b = a;
         b.show();
