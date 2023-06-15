@@ -11,6 +11,7 @@ namespace tests
         list_container<int> a;
         // a.insert(0, 41);
         a.push_back(42);
+        a.show();
         // a.erase(0);
         a.push_back(43);
         a.push_back(44);

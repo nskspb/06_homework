@@ -197,6 +197,7 @@ private:
     mutable int c_size;
     mutable Node<T> *head;
 
+    // Двигаемся до нужного значения
     Node<T> *find_pos(int position, Node<T> *tmp)
     {
         for (int i = 0; i < position; ++i)
