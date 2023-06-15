@@ -8,7 +8,7 @@ namespace tests
 {
     void example()
     {
-        list_container<int> a;
+        doubly_list_container<int> a;
         // a.insert(0, 41);
         a.push_back(42);
         a.show();
@@ -17,7 +17,7 @@ namespace tests
         a.push_back(44);
         a.show();
 
-        list_container<int> b = a;
+        doubly_list_container<int> b = a;
         b.show();
         b.push_back(12);
         b.push_back(13);
@@ -25,26 +25,31 @@ namespace tests
         b.show();
         a.show();
 
-        list_container<int> c;
+        doubly_list_container<int> c;
         c = std::move(b);
         c.show();
         c.push_back(27);
 
-        list_container<int> d;
+        doubly_list_container<int> d;
         d = c;
         d.push_back(31);
         d.show();
 
-        list_container<int> e = std::move(d);
+        doubly_list_container<int> e = std::move(d);
         e.push_back(32);
         e.show();
+        for (int i = 0; i < e.size(); ++i)
+        {
+            std::cout << e[i] << " ";
+        }
+        std::cout << std::endl;
     }
 }
 
 int main()
 {
     tests::example();
-    /*const size_t container_count = 3;
+    const size_t container_count = 3;
 
     IContainers<int> *container[container_count];
 
@@ -82,7 +87,7 @@ int main()
         std::cout << std::endl;
 
         delete container[i];
-    }*/
+    }
 
     return 0;
 }
