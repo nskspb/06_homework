@@ -133,10 +133,11 @@ public:
         {
             Node1<T> *previous = head;
 
-            for (int i = 0; i < position - 1; ++i)
+            previous = find_pos(position - 1, previous);
+            /*for (int i = 0; i < position - 1; ++i)
             {
                 previous = previous->next;
-            }
+            }*/
 
             Node1<T> *follow = new Node1<T>(element, previous->next, previous);
             previous->next = follow;
@@ -145,10 +146,11 @@ public:
         else
         {
             Node1<T> *follow = tail;
-            for (int i = c_size - 1; i >= position; --i)
+            follow = find_pos(position, follow);
+            /*for (int i = c_size - 1; i >= position; --i)
             {
                 follow = follow->prev;
-            }
+            }*/
             follow->next = new Node1<T>(element, follow->next, follow);
             follow->next->next->prev = follow->next;
             c_size++;
@@ -168,11 +170,11 @@ public:
         else if (c_size / 2 - position >= 0)
         {
             Node1<T> *previous = head;
-
-            for (int i = 0; i < position - 1; ++i)
+            previous = find_pos(position - 1, previous);
+            /*for (int i = 0; i < position - 1; ++i)
             {
                 previous = previous->next;
-            }
+            }*/
 
             Node1<T> *follow = previous->next;
             previous->next = follow->next;
@@ -182,10 +184,11 @@ public:
         else
         {
             Node1<T> *follow = tail;
-            for (int i = c_size - 1; i > position + 1; --i)
+            follow = find_pos(position + 1, follow);
+            /*for (int i = c_size - 1; i > position + 1; --i)
             {
                 follow = follow->prev;
-            }
+            }*/
             Node1<T> *previous = follow->prev;
             follow->prev = previous->prev;
             previous->prev->next = follow;
@@ -199,20 +202,21 @@ public:
         if (c_size / 2 - position >= 0)
         {
             Node1<T> *tmp = head;
-            for (int i = 0; i < position; ++i)
+            tmp = find_pos(position, tmp);
+            /*for (int i = 0; i < position; ++i)
             {
                 tmp = tmp->next;
-            }
+            }*/
             return tmp->data;
         }
         else
         {
             Node1<T> *tmp = tail;
-
-            for (int i = c_size; i > position + 1; --i)
+            tmp = find_pos(position + 1, tmp);
+            /*for (int i = c_size - 1; i >= position + 1; --i)
             {
                 tmp = tmp->prev;
-            }
+            }*/
             return tmp->data;
         }
     }
@@ -255,4 +259,23 @@ private:
     mutable int c_size;
     mutable Node1<T> *head;
     mutable Node1<T> *tail;
+
+    Node1<T> *find_pos(int position, Node1<T> *tmp) const
+    {
+        if (c_size / 2 - position >= 0)
+        {
+            for (int i = 0; i < position; ++i)
+            {
+                tmp = tmp->next;
+            }
+        }
+        else
+        {
+            for (int i = c_size - 1; i >= position; --i)
+            {
+                tmp = tmp->prev;
+            }
+        }
+        return tmp;
+    }
 };

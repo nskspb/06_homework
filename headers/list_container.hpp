@@ -72,10 +72,13 @@ public:
         {
             Node<T> *tmp = head;
 
-            while (tmp->next != nullptr)
+            tmp = find_pos(c_size - 1, tmp);
+
+            /*for (int i = 0; i < c_size - 1; ++i)
             {
                 tmp = tmp->next;
-            }
+            }*/
+
             tmp->next = new Node<T>(element);
         }
 
@@ -106,10 +109,12 @@ public:
         {
             Node<T> *previous = head;
 
-            for (int i = 0; i < position - 1; ++i)
+            /*for (int i = 0; i < position - 1; ++i)
             {
                 previous = previous->next;
-            }
+            }*/
+
+            previous = find_pos(position - 1, previous);
 
             Node<T> *follow = new Node<T>(element, previous->next);
             previous->next = follow;
@@ -127,10 +132,12 @@ public:
         {
             Node<T> *previous = head;
 
-            for (int i = 0; i < position - 1; ++i)
+            /*for (int i = 0; i < position - 1; ++i)
             {
                 previous = previous->next;
-            }
+            }*/
+
+            previous = find_pos(position - 1, previous);
 
             Node<T> *follow = previous->next;
             previous->next = follow->next;
@@ -187,4 +194,13 @@ public:
 private:
     mutable int c_size;
     mutable Node<T> *head;
+
+    Node<T> *find_pos(int position, Node<T> *tmp)
+    {
+        for (int i = 0; i < position; ++i)
+        {
+            tmp = tmp->next;
+        }
+        return tmp;
+    }
 };
