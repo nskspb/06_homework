@@ -73,7 +73,7 @@ public:
             Node<T> *tmp = head;
 
             // реализовал приватный метод
-            find_pos(c_size - 1, tmp);
+            tmp = find_pos(c_size - 1, tmp);
 
             // Было верным решением
             /*for (int i = 0; i < c_size - 1; ++i)
@@ -111,12 +111,12 @@ public:
         {
             Node<T> *previous = head;
 
-            for (int i = 0; i < position - 1; ++i)
+            /*for (int i = 0; i < position - 1; ++i)
             {
                 previous = previous->next;
-            }
+            }*/
 
-            // find_pos(position - 1, previous);
+            previous = find_pos(position - 1, previous);
 
             Node<T> *follow = new Node<T>(element, previous->next);
             previous->next = follow;
@@ -134,12 +134,12 @@ public:
         {
             Node<T> *previous = head;
 
-            for (int i = 0; i < position - 1; ++i)
+            /*for (int i = 0; i < position - 1; ++i)
             {
                 previous = previous->next;
-            }
+            }*/
 
-            // find_pos(position - 1, previous);
+            previous = find_pos(position - 1, previous);
 
             Node<T> *follow = previous->next;
             previous->next = follow->next;
