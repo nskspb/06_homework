@@ -194,7 +194,7 @@ public:
 private:
     mutable int c_size;
     mutable Node<T> *head;
-
+    // Метод для нахождения нужного узла
     Node<T> *find_pos(int position, Node<T> *tmp)
     {
         for (int i = 0; i < position; ++i)

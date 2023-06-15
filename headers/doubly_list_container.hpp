@@ -259,7 +259,7 @@ private:
     mutable int c_size;
     mutable Node1<T> *head;
     mutable Node1<T> *tail;
-
+    // Метод для нахождения нужного узла
     Node1<T> *find_pos(int position, Node1<T> *tmp) const
     {
         if (c_size / 2 - position >= 0)
