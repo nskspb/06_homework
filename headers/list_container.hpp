@@ -72,10 +72,8 @@ public:
         {
             Node<T> *tmp = head;
 
-            // реализовал приватный метод
             tmp = find_pos(c_size - 1, tmp);
 
-            // Было верным решением
             /*for (int i = 0; i < c_size - 1; ++i)
             {
                 tmp = tmp->next;
@@ -197,7 +195,6 @@ private:
     mutable int c_size;
     mutable Node<T> *head;
 
-    // Двигаемся до нужного значения
     Node<T> *find_pos(int position, Node<T> *tmp)
     {
         for (int i = 0; i < position; ++i)
